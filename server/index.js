@@ -1,11 +1,21 @@
 require('dotenv').config()
 const express = require("express")
 const mongoose = require('mongoose')
+const router = require('./routes/route')
+const session = require('express-session');
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
+app.use("/api",router)
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET || 'your-secret-key',
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+  
 try {
     mongoose.connect(process.env.MONGO_URL,console.log("Database connected"))
 } catch (error) {
