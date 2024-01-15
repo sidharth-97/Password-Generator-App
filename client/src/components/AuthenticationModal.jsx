@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import Login from './Login';
+import Signup from './Signup';
 
 const AuthenticationModal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isLogin,setIsLogin]=useState(true)
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
 
+  const handleIsLogin = (val) => {
+    console.log(isLogin);
+    setIsLogin(val)
+  }
+
   return (
     <div className="max-w-2xl mx-auto">
       {/* Modal toggle */}
       <button
-        className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
         type="button"
         onClick={toggleModal}
       >
@@ -30,11 +37,11 @@ const AuthenticationModal = () => {
       
         <div className="relative w-full max-w-md px-4 h-full md:h-auto">
           {/* Modal content */}
-          <div className="bg-white rounded-lg shadow relative dark:bg-gray-700">
+          <div className="bg-white rounded-lg shadow relative :bg-gray-700">
             <div className="flex justify-end p-2">
               <button
                 type="button"
-                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center :hover:bg-gray-800 :hover:text-white"
                 onClick={toggleModal}
               >
                 <svg
@@ -51,7 +58,9 @@ const AuthenticationModal = () => {
                 </svg>
               </button>
             </div>
-         <Login/>
+            {
+              isLogin? <Login isLogin={handleIsLogin } />:<Signup isLogin={ handleIsLogin} />
+            }
           </div>
         </div>
       </div>

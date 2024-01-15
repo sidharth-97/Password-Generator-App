@@ -1,6 +1,6 @@
 import Api from "./axios";
 
-export const Signup = async (data)=>{
+export const signup = async (data)=>{
     try {
         const response = await Api.post("register", data)
         return response
