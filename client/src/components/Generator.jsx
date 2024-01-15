@@ -1,6 +1,7 @@
 import React from "react";
 import Display from "../UI/Display";
 import Selectors from "./Selectors";
+import AuthenticationModal from "./AuthenticationModal";
 
 const Generator = () => {
   return (
@@ -10,6 +11,7 @@ const Generator = () => {
         <div>
           <div className="pb-4"><Display/></div>
           <div><Selectors /></div>
+          <AuthenticationModal/>
         </div>
       </div>
     </div>
