@@ -46,9 +46,34 @@ const logout = async (req, res) => {
   }
 };
 
+const storePassword = async (req, res) => {
+  const data = req.body
+  const userId = req.session.user
+  if (userId) {
+    const user = await userModel.findOne({ _id: userId })
+    user.data.push(data)
+    await user.save()
+    res.status(200).json("Success")
+  } else {
+    res.status(401).json("Access Denied")
+  }
+}
+
+const showStoredPasswords = async (req, res) => {
+  const userId = req.session.user
+  if (userId) {
+    const user = await userModel.findOne({ _id: userId })
+    res.status(200).json(user.data)
+  } else {
+    res.status(401).json("Access Denied")
+  }
+}
+
 
 module.exports = {
   signup,
   login,
-  logout
+  logout,
+  storePassword,
+  showStoredPasswords
 };

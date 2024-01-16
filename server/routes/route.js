@@ -7,6 +7,8 @@ router.use(session)
 
 router.post("/register", controller.signup)
 router.post("/login", controller.login)
-router.post("/logout",controller.logout)
+router.post("/logout", controller.logout)
+router.post("/passwords", controller.storePassword)
+router.get("/passwords",controller.showStoredPasswords)
 
 module.exports=router
