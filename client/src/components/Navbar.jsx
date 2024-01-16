@@ -1,10 +1,16 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { logout } from "../services/api";
+import { useAuth } from "./AuthContext";
+import AuthenticationModal from "./AuthenticationModal";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const {user,logoutC}=useAuth()
   const handleLogout = async() => {
     const response = await logout()
+    logoutC()
+    toast.success("Logout success")
     console.log(response)
   }
   return (
@@ -34,7 +40,7 @@ const Navbar = () => {
           </svg>
         </button>
       </div>
-      {10 ? (
+      {user ? (
         <div className="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
           <div className="lg:flex lg:items-stretch lg:justify-end ml-auto">
             <Link
@@ -55,7 +61,7 @@ const Navbar = () => {
               type="button"
               className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-gray-300 font-semibold"
             >
-              Sign In
+              <AuthenticationModal/>
             </button>
           </div>
         </div>

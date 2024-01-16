@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import { signup } from "../services/api";
+import { toast } from "react-toastify";
 
 const Signup = ({isLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (!email || !password || name) {
+      e.preventDefault();
+      toast.error("Please fill all fields")
+      return
+    }
     const response = await signup({ name, email, password });
-    console.log(response);
+    if (response?.status == 200) {
+      toast.success("Signup successfull")
+    } else {
+      toast.error("Email already exists")
+    }
   };
   return (
     <div>

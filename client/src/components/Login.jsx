@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { login } from "../services/api";
 import { useAuth } from "./AuthContext";
+import { toast } from "react-toastify";
 
 const Login = ({isLogin}) => {
   const [email, setEmail] = useState("");
@@ -8,11 +9,17 @@ const Login = ({isLogin}) => {
   const { user, loginC, logout } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!email || !password) {
+      toast.error("Please fill all fields")
+      return
+    }
     const response = await login({ email, password })
     console.log(response);
     if (response.status == 200) {
-      
+      toast.success("Login Successfull")
       loginC(response?.data)
+    } else {
+      toast.error("Login failed")
     }
 }
   return (
