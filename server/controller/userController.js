@@ -35,7 +35,20 @@ const login = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  console.log(req.session.user);
+  if (req.session) {
+    req.session.destroy();
+    res.status(200).json("Logged out successfully");
+  } else {
+    console.error('Session does not exist.');
+    res.status(401).json("Session does not exist.");
+  }
+};
+
+
 module.exports = {
   signup,
   login,
+  logout
 };

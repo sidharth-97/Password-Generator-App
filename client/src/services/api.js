@@ -16,3 +16,12 @@ export const login = async (data) => {
         console.log(error);
     }
 }
+
+export const logout = async () => {
+    try {
+        const response = await Api.post("logout")
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+}

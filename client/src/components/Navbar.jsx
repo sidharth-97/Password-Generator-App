@@ -1,7 +1,12 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { logout } from "../services/api";
 
 const Navbar = () => {
+  const handleLogout = async() => {
+    const response = await logout()
+    console.log(response)
+  }
   return (
     <nav className="relative select-none bg-gray-200 lg:flex lg:items-stretch w-full">
       <div className="flex flex-no-shrink items-stretch h-12">
@@ -38,7 +43,7 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
-            <Button className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-gray-300 font-semibold">
+            <Button onClick={handleLogout} className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-gray-300 font-semibold">
               Sign out
             </Button>
           </div>
