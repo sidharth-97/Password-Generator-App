@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { login } from "../services/api";
+import { useAuth } from "./AuthContext";
 
 const Login = ({isLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { user, loginC, logout } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await login({ email, password })
     console.log(response);
+    if (response.status == 200) {
+      
+      loginC(response?.data)
+    }
 }
   return (
     <div>
