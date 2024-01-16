@@ -25,3 +25,12 @@ export const logout = async () => {
         console.log(error);
     }
 }
+
+export const savePassword = async (data) => {
+    try {
+        const response = await Api.post("passwords",data)
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+}

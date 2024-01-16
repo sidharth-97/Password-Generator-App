@@ -1,7 +1,7 @@
 import React from 'react'
-import BasicButtons from './Button'
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import CopyToClipboardButton from './CopyToClipboard';
+import SavePassword from '../components/SavePassword';
 
 const Display = ({password}) => {
   return (
@@ -12,7 +12,7 @@ const Display = ({password}) => {
       <div className='flex items-center space-x-3'>
         <AutorenewIcon/>
         <CopyToClipboardButton textToCopy={password}/>
-        <BasicButtons />
+        <SavePassword password={password} />
     </div>
 </div>
 

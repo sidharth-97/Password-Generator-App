@@ -16,7 +16,6 @@ const Generator = () => {
         <div>
           <div className="pb-4"><Display password={password}/></div>
           <div className="flex items-center justify-center w-full"><Selectors password={handlePassword} /></div>
-          <AuthenticationModal/>
         </div>
       </div>
     </div>
