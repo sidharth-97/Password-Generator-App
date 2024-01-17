@@ -4,6 +4,7 @@ import { logout } from "../services/api";
 import { useAuth } from "./AuthContext";
 import AuthenticationModal from "./AuthenticationModal";
 import { toast } from "react-toastify";
+import ViewSavedPassword from "./ViewSavedPassword";
 
 const Navbar = () => {
   const {user,logoutC}=useAuth()
@@ -43,12 +44,11 @@ const Navbar = () => {
       {user ? (
         <div className="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
           <div className="lg:flex lg:items-stretch lg:justify-end ml-auto">
-            <Link
-              to="/dashboard"
+            <span
               className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-gray-300 font-semibold"
             >
-              Dashboard
-            </Link>
+              <ViewSavedPassword/>
+            </span>
             <Button onClick={handleLogout} className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-gray-300 font-semibold">
               Sign out
             </Button>

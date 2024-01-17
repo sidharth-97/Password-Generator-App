@@ -34,3 +34,12 @@ export const savePassword = async (data) => {
         console.log(error);
     }
 }
+
+export const savedPasswords = async () => {
+    try {
+        const response = await Api.get("passwords")
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+}

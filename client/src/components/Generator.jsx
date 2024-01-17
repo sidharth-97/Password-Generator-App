@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Display from "../UI/Display";
 import Selectors from "./Selectors";
-import AuthenticationModal from "./AuthenticationModal";
 
 const Generator = () => {
   const [password, setPassword] = useState("")
