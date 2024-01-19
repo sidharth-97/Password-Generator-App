@@ -48,7 +48,7 @@ const Selectors = ({password}) => {
   return (
     <div className="w-full">
       <h1 className="text text-center text-2xl">Customise your password</h1>
-      <div className="flex flex-row justify-evenly mt-3">
+      <div className="flex flex-row justify-between mt-3">
         <div className="flex flex-col">
           <span>Password length :{length} </span>
           <LengthSlider setLength={handleLength} />
