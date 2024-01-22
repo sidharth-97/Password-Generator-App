@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { savedPasswords } from "../services/api";
+import CopyToClipboardButton from "../UI/CopyToClipboard";
 
 const ViewSavedPassword = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -9,11 +10,22 @@ const ViewSavedPassword = () => {
     setModalOpen(!isModalOpen);
   };
 
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      // You can show a notification or perform any other action after successful copy
+      console.log(`Copied to clipboard: ${text}`);
+    } catch (error) {
+      console.error("Error copying to clipboard:", error);
+    }
+  };
+
   useEffect(() => {
     async function fetchPasswords() {
       try {
         const response = await savedPasswords();
         setPassword(response?.data);
+        console.log(response?.data);
       } catch (error) {
         console.error("Error fetching saved passwords:", error);
       }
@@ -66,6 +78,7 @@ const ViewSavedPassword = () => {
                       <div key={key} className="flex-1">
                         <p className="text-gray-500">{key}:</p>
                         <p className="font-semibold">{value}</p>
+                        <CopyToClipboardButton textToCopy={value}/>
                       </div>
                     ))}
                   </div>

@@ -6,10 +6,15 @@ import {toast} from 'react-toastify'
 const Modal = ({ showModal, closeModal, content }) => {
     const [key, setKey ] = useState("")
     const handleSubmit = async () => {
-        console.log(key, content);
+      console.log(key, content);
+      if(key=="")return toast.error("Please give a keyword")
         const data={[key]:content}
         const response = await savePassword(data)
-        console.log(response);
+      if (response.status == 200) {
+          toast.success("Password saved")
+      } else {
+        toast.error(response?.data)
+        }
     }
   return (
     <div
@@ -18,8 +23,8 @@ const Modal = ({ showModal, closeModal, content }) => {
       aria-hidden={!showModal}
       className={`${
         showModal ? 'fixed' : 'hidden'
-      } overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}
-    >
+      }  inset-0 z-50 flex items-center justify-center`}
+    > <div className="absolute inset-0 bg-gray-800 opacity-75"></div>
       <div className="relative p-4 w-full max-w-2xl max-h-full">
         {/* Modal content */}
         <div className="relative bg-white rounded-lg shadow :bg-gray-700">
@@ -52,8 +57,8 @@ const Modal = ({ showModal, closeModal, content }) => {
             </button>
           </div>
           {/* Modal body */}
-          <div className="p-4 md:p-5 space-y-4">
-          <input type="text"onChange={(e)=>setKey(e.target.value)} placeholder='Enter your keyword' />
+          <div className="p-4 md:p-5 space-y-4 w-full">
+          <input className='w-full p-3' type="text"onChange={(e)=>setKey(e.target.value)} placeholder='Enter your keyword' />
           </div>
           {/* Modal footer */}
           <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b :border-gray-600">
