@@ -1,3 +1,8 @@
+*{
+    overflow: hidden;
+}
+
+
 .img {
     background-image: url("../public/5570869.jpg");
     background-repeat: no-repeat;

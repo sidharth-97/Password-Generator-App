@@ -32,10 +32,9 @@ const AuthenticationModal = () => {
         aria-hidden="true"
         className={`${
           isModalOpen ? 'fixed' : 'hidden'
-        }  overflow-x-hidden overflow-y-auto h-modal md:h-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 justify-center items-center`}
-        >
-      
-        <div className="relative w-full max-w-md px-4 h-full md:h-auto">
+        }  inset-0 z-50 flex items-center justify-center`}
+        ><div className="absolute inset-0 bg-gray-800 opacity-75"></div>
+        <div className="relative w-screen max-w-md px-4 h-full md:h-auto">
           {/* Modal content */}
           <div className="bg-white rounded-lg shadow relative :bg-gray-700">
             <div className="flex justify-end p-2">

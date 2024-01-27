@@ -10,7 +10,7 @@ const Display = ({password}) => {
         {password}
     </div> 
       <div className='flex items-center space-x-3'>
-        <AutorenewIcon/>
+        {/* <AutorenewIcon/> */}
         <CopyToClipboardButton textToCopy={password}/>
         <SavePassword password={password} />
     </div>

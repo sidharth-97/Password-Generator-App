@@ -17,7 +17,7 @@ const Login = ({isLogin}) => {
     console.log(response);
     if (response.status == 200) {
       toast.success("Login Successfull")
-      loginC(response?.data)
+      loginC(response?.data?._id)
     } else {
       toast.error("Login failed")
     }
