@@ -15,7 +15,7 @@ const Navbar = () => {
     console.log(response)
   }
   return (
-    <nav className="relative select-none bg-gray-200 lg:flex lg:items-stretch w-full">
+    <nav className="relative flex justify-between flex-col md:flex md:flex-row select-none bg-gray-200 lg:flex lg:items-stretch w-full">
       <div className="flex flex-no-shrink items-stretch h-12">
         <Link
           to="/"
@@ -42,8 +42,8 @@ const Navbar = () => {
         </button>
       </div>
       {user ? (
-        <div className="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
-          <div className="lg:flex lg:items-stretch lg:justify-end ml-auto">
+        <div className=" flex lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
+          <div className="flex lg:flex lg:items-stretch lg:justify-end ml-auto">
             <span
               className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-gray-300 font-semibold"
             >

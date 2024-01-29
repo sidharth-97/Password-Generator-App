@@ -31,7 +31,7 @@ const ViewSavedPassword = () => {
       }
     }
     fetchPasswords();
-  }, []);
+  });
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -69,22 +69,29 @@ const ViewSavedPassword = () => {
                 ></path>
               </svg>
             </button>
-            <h2 className="text-xl font-semibold mb-4">Saved Passwords</h2>
-            <div className="space-y-4">
-              {password &&
-                password.map((item, index) => (
-                  <div key={index} className="flex justify-between">
-                    {Object.entries(item).map(([key, value]) => (
-                      <div key={key} className="flex-1">
-                        <p className="text-gray-500">{key}:</p>
-                        <p className="font-semibold">{value}</p>
-                        <CopyToClipboardButton textToCopy={value}/>
-                      </div>
-                    ))}
-                  </div>
-                ))}
+            <div className="saved-passwords">
+  <h2 className="text-2xl font-bold mb-6 text-center">Saved Passwords</h2>
+  <div className="grid gap-6">
+    {password &&
+      password.map((item, index) => (
+        <div key={index} className="password-item p-6 border-2 rounded-lg shadow-md">
+          {Object.entries(item).map(([key, value]) => (
+            <div key={key} className="mb-4">
+              <span className="text-gray-600 text-lg">{key}:</span>
+              <div className="flex flex-row justify-between">
+                  <span className="font-bold text-base ml-4">{value.substring(0, 15)}...</span>
+              <CopyToClipboardButton textToCopy={Object.values(item)[0]} className="mt-4" />
+              </div>
             </div>
-          </div>
+          ))}
+        
+        </div>
+      ))}
+  </div>
+</div>
+
+
+</div>
         </div>
       )}
     </div>
