@@ -5,7 +5,6 @@ import CopyToClipboardButton from "../UI/CopyToClipboard";
 const ViewSavedPassword = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [password, setPassword] = useState([]);
-
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };

@@ -27,6 +27,7 @@ const login = async (req, res) => {
     if (passwordMatch) {
         req.session = req.session || {};
       req.session.user = user._id
+      user.password=undefined
       console.log(req.session.user)
       res.status(200).json(user);
     }
@@ -63,7 +64,7 @@ const showStoredPasswords = async (req, res) => {
   const userId = req.session.user
   if (userId) {
     const user = await userModel.findOne({ _id: userId })
-    res.status(200).json(user.data)
+    res.status(200).json(user.data.reverse())
   } else {
     res.status(401).json("Access Denied")
   }
